@@ -5,7 +5,7 @@ class Form extends React.Component{
     render(){
         return(
             <React.Fragment>
-             ENTER YOUR NAME <input name="name"/>
+             ENTER YOUR age <input name="name"/>
              <button>ADD</button>
             </React.Fragment>
         )
