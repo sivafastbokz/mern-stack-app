@@ -7,7 +7,7 @@ class Form extends React.Component{
             <React.Fragment>
             <div className="form">
              ENTER YOUR NAME: <input name="name"/>
-             <button>ADD</button>
+             <button>ADD NEW</button>
              </div>
              <table>
                 <tr>
