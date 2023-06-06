@@ -1,36 +1,46 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import '/home/siva/Desktop/task1/myapp/src/component/form.css'
+import axios from "axios";
 
-class Form extends React.Component{
-    render(){
-        return(
-            <React.Fragment>
+function Form(){
+    const[userName,setUserName]=useState("");
+    const[Users,setAllUsers]=useState([]);
+
+    const addnew =()=>{
+        axios.post("http://localhost:5000/adduser",{
+            userName:userName
+        });
+    };
+    const userlist = () => {
+         axios.get("http://localhost:5000/getuserlist").then((res) => {
+           
+         setAllUsers(res.data)}
+         );
+      };
+      useEffect(() => {
+        userlist();
+      }, []);
+    return(
+        <React.Fragment>
             <div className="form">
-             ENTER YOUR NAME: <input name="name"/>
-             <button>ADD NEW</button>
+             ENTER YOUR NAME: <input type='text'onChange={(event)=>{
+                setUserName(event.target.value)
+             }}/>
+             <button onClick={addnew}>ADD NEW</button>
              </div>
              <table>
                 <tr>
-                    <th>SNO</th>
-                    <th>NAME</th>
-                    <th>ACTION</th>
+                 <th>NAME</th>
+                <th>ACTION</th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td></td>
-                    <td><button className="button1">DELETE</button></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td></td>
-                    <td><button className="button1">DELETE</button></td>
-                </tr>
-             </table>
-             
-           
-            </React.Fragment>
-        )
-    }
-};
-
+                {Users.map(user => (
+                <tr key={user.id}>
+                <td>{user.userName}</td>
+                <td><button>DELETE</button></td>
+              </tr>
+            ))}
+            </table>
+        </React.Fragment>
+    )
+}
 export default Form;
