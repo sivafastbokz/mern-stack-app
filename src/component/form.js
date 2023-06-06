@@ -23,7 +23,7 @@ function Form(){
     return(
         <React.Fragment>
             <div className="form">
-             ENTER YOUR NAME: <input type='text'onChange={(event)=>{
+             CREATE CONTACTS: <input type='text'onChange={(event)=>{
                 setUserName(event.target.value)
              }}/>
              <button onClick={addnew}>ADD NEW</button>
@@ -36,7 +36,7 @@ function Form(){
                 {Users.map(user => (
                 <tr key={user.id}>
                 <td>{user.userName}</td>
-                <td><button>DELETE</button></td>
+                <td><button className="button1">DELETE</button></td>
               </tr>
             ))}
             </table>
