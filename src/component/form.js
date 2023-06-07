@@ -45,14 +45,14 @@ function Form(){
                 <tr>
                  <th>NAME</th>
                 <th>ACTION</th>
+                <th>ACTION</th>
                 </tr>
                 {Users.map(user => ( 
                 <tr key={user.id}>
                 <td>{user.userName}</td>
                 <td><button className="button1" onClick={()=>{
-                    deleteuser(user._id)
-                    
-                }}>DELETE</button></td>
+                    deleteuser(user._id)}}>DELETE</button></td>
+                    <td><button className="button1">UPDATE</button></td>
               </tr>
             ))}
             </table>
