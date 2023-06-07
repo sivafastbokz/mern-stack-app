@@ -1,13 +1,10 @@
 import React, { useState,useEffect,  } from "react";
 import '/home/siva/Desktop/task1/myapp/src/component/form.css'
 import axios from "axios";
-
-const numbers = [1,2,3,4,5]
-
 function Form(){
     const[userName,setUserName]=useState("");
     const[Users,setAllUsers]=useState([]);
-     const[users,setUsers]=useState([]);
+    const[users,setUsers]=useState([]);
 
     const addnew =()=>{
         axios.post("http://localhost:5000/adduser",{
@@ -36,13 +33,6 @@ function Form(){
           });
       };
   
-
-
- let maps= numbers.map((i)=>{
-    if( i<3){
-        return i
-        }
- })
     return(
         <React.Fragment>
             <div className="form">
@@ -66,16 +56,6 @@ function Form(){
               </tr>
             ))}
             </table>
-
-
-            <div>
-                <>Top 3 points</>
-                
-                        <p>{maps}</p>
-
-                    
-                
-            </div>
         </React.Fragment>
     )
 }
