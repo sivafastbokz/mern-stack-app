@@ -1,8 +1,11 @@
+body{
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
 .form{
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    border: 2px solid black;
+    background: rgb(34,193,195);
+    background: radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(253,187,45,0) 100%);
+    border: 2px solid rgb(135, 146, 146);
     height: 100px;
     width: 300px;
     margin: auto;
@@ -11,23 +14,24 @@
     border-radius: 6%;
 }
 button{
-    /* margin-top: 55px; */
     text-align: center;
     padding-top: 5px;
-    /* margin-top: 25px; */
     margin-left: 15px;
     border-radius: 20%; 
     cursor: pointer;
-}
-button:hover{
-    background-color: chartreuse;
+    background-color:#0a0a23;
+    color: #fff;
+    border:none;
+    border-radius:10px;
 }
 .button1{
     cursor: pointer;
-}
-
-.button1:hover{
     background-color: #ff0000;
+    color: aliceblue;
+}
+.button2{
+    cursor: pointer;
+    background-color: goldenrod;
 }
 table{
     border: 2px solid black;
@@ -35,7 +39,11 @@ table{
     margin-top: 100px;
     width: 800px;
     height: 200px;
-    border: 2px solid forestgreen;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-collapse: collapse;
 }
 td{
     border: 2px solid black;
@@ -44,4 +52,10 @@ td{
 th{
     border: 2px solid black;
     border-bottom: 1px solid black;
+}
+input{
+    --input-border: #8b8a8b;
+  --input-focus-h: 245;
+  --input-focus-s: 100%;
+  --input-focus-l: 42%;
 }

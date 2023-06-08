@@ -6,14 +6,15 @@ function Form(){
     const[Users,setAllUsers]=useState([]);
     const[users,setUsers]=useState([]);
 
-    const addnew =()=>{
-        axios.post("http://localhost:5000/adduser",{
+    const addnew = async()=>{
+        window.alert('your name has been added')
+       await axios.post("http://localhost:5000/adduser",{
             userName:userName
         });
+        handlereload();
     };
     const userlist = () => {
          axios.get("http://localhost:5000/getuserlist").then((res) => {
-           
          setAllUsers(res.data)}
          );
       };
@@ -22,16 +23,27 @@ function Form(){
       }, []);
 
       const deleteuser = (id) => {
+        window.confirm('are you sure?')
         axios.delete(`http://localhost:5000/deleteuser/${id}`)
           .then(response => {
             setUsers(users.filter(user => user.id !== id));
-            
             console.log(response.data);
           })
           .catch(error => {
             console.error(error);
           });
+          handlereload();
       };
+      const updateuser = (id) =>{
+        const newName = prompt('Enter the new name')
+        axios.put(`http://localhost:5000/update/${id}`,{
+          userName:newName
+        })
+       handlereload();
+      }
+   const handlereload =()=>{
+         window.location.reload();
+      }
   
     return(
         <React.Fragment>
@@ -50,9 +62,8 @@ function Form(){
                 {Users.map(user => ( 
                 <tr key={user.id}>
                 <td>{user.userName}</td>
-                <td><button className="button1" onClick={()=>{
-                    deleteuser(user._id)}}>DELETE</button></td>
-                    <td><button className="button1">UPDATE</button></td>
+                <td><button className="button1" onClick={()=>{deleteuser(user._id)}}>DELETE</button></td>
+                    <td><button className="button2" onClick={()=>{updateuser(user._id)}}>UPDATE</button></td>
               </tr>
             ))}
             </table>
