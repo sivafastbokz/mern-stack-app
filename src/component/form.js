@@ -2,18 +2,18 @@ import React, { useState,useEffect,  } from "react";
 import '/home/siva/Desktop/task1/myapp/src/component/form.css'
 import axios from "axios";
 function Form(){
-    const[userName,setUserName]=useState("");
-    const[Users,setAllUsers]=useState([]);
-    const[users,setUsers]=useState([]);
+        const[userName,setUserName]=useState("");
+        const[Users,setAllUsers]=useState([]);
+        const[users,setUsers]=useState([]);
 
-    const addnew = async()=>{
+        const addnew = async()=>{
         window.alert('your name has been added')
-       await axios.post("http://localhost:5000/adduser",{
+        await axios.post("http://localhost:5000/adduser",{
             userName:userName
         });
         handlereload();
     };
-    const userlist = () => {
+         const userlist = () => {
          axios.get("http://localhost:5000/getuserlist").then((res) => {
          setAllUsers(res.data)}
          );
@@ -22,7 +22,7 @@ function Form(){
         userlist();
       }, []);
 
-      const deleteuser = (id) => {
+        const deleteuser = (id) => {
         window.confirm('are you sure?')
         axios.delete(`http://localhost:5000/deleteuser/${id}`)
           .then(response => {
@@ -34,21 +34,25 @@ function Form(){
           });
           handlereload();
       };
-      const updateuser = (id) =>{
+      
+        const updateuser = (id) =>{
         const newName = prompt('Enter the new name')
         axios.put(`http://localhost:5000/update/${id}`,{
           userName:newName
         })
        handlereload();
+          // const up = alert(id)
       }
-   const handlereload =()=>{
+
+
+        const handlereload =()=>{
          window.location.reload();
       }
   
     return(
         <React.Fragment>
             <div className="form">
-             CREATE CONTACTS: <input type='text'onChange={(event)=>{
+             CREATE CONTACTS: <input type='text'value={userName} onChange={(event)=>{
                 setUserName(event.target.value)
              }}/>
              <button onClick={addnew}>ADD NEW</button>

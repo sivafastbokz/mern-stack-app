@@ -48,10 +48,28 @@ table{
 td{
     border: 2px solid black;
     text-align: center;
+    padding: 12px 15px;
 }
 th{
     border: 2px solid black;
     border-bottom: 1px solid black;
+    padding: 12px 15px;
+}
+tr{
+    background-color: #009879;
+    color: #ffffff;
+    text-align: center;
+    border-bottom: 1px solid #dddddd;
+}
+tr:nth-of-type(even) {
+    background-color: #47c643;
+}
+tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+tr.active-row {
+    font-weight: bold;
+    color: #009879;
 }
 input{
     --input-border: #8b8a8b;
